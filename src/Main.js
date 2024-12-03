@@ -11,9 +11,9 @@ export default function Main() {
     <div className='row'>
       {
         products.map((value, index) => (
-          <div className='box'>
+          <div key={index} className='box'>
             <h3>{value.name}</h3>
-            <h4> {value.price}</h4>
+            <h4> ${value.price}</h4>
             <button>Add to Cart</button>
             </div>
         ))
