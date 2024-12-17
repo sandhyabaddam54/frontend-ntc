@@ -1,5 +1,5 @@
 .row {
-    display: flex;
+    display: block;
     justify-content: center;
 }
 
@@ -7,4 +7,14 @@
     margin: 10px;
     padding: 20px;
     background-color: orange;
+}
+.name-container{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.products-container{
+    display: flex;
+}
+.quanity-container {
+    margin-bottom: 10px;
 }
