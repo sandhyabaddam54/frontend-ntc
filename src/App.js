@@ -7,6 +7,7 @@ import Cart from './Cart'
 import Login from './Login'
 import Signup from './Signup'
 import Admin from './Admin'
+import Orders from './Orders'
 export const userContextSignUp = createContext();
 export default function App() {
   const [result, setResult] = useState(null);
@@ -22,6 +23,7 @@ export default function App() {
         <Route index element= {<Main />} />
         <Route path='main' element = {<Main />} />
         <Route path='cart' element= {<Cart />} />
+        <Route path='orders' element={<Orders />}></Route>
         <Route path='admin' element={<Admin />}></Route>
         <Route path='login' element= {<Login />} />
         <Route path='signup' element={<Signup />} />

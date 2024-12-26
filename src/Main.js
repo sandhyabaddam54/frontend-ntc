@@ -13,7 +13,7 @@ export default function Main() {
   const [priceres, setPriceRes] = useState();
   // const {cart, setCart} = useContext(userContextSignUp);
   // const {selectedProduct, setSelectedProduct} = useContext(userContextSignUp);
-     const [quantity, setQuantity] = useState();
+     const [quantity, setQuantity] = useState(1);
   const url = "http://localhost:8080/";
   const showProducts = async () => {
       const response = await axios.get(url) 
@@ -30,19 +30,27 @@ console.log("getname: ","is: "+result);
   //   { name: "Product 3", price: 40}
   // ]
   // const handleAddCart = (proName,proPrice) => {
-    const handleAddCart = (id, proName, proPrice) => {
+    const handleAddCart = (id, proQuantity) => {
 
     // setNameRes(proName)
     // setPriceRes(proPrice)
-    if(id){
-    setCart({id: id, name: proName, price: proPrice, quantity: quantity})
-    setCart({id: id, name: proName, price: proPrice, quantity: quantity})
 
-    }else{
-      alert("there is no product with that id")
-    }
+
+    // if(id){
+    // setCart({id: id, name: proName, price: proPrice, quantity: quantity})
+    // setCart({id: id, name: proName, price: proPrice, quantity: quantity})
+
+    // }else{
+    //   alert("there is no product with that id")
+    // }
+
+
+    setCart((prev) => ({...prev, [id]: proQuantity}))    //spread operator
+    console.log("products.,","" +"coming.."+ cart);
+    setQuantity(1);
+
     // setCart(proPrice)
-    navigate("/Cart");
+    // navigate("/Cart");
   }
   return (
     <div className='row'>
@@ -61,7 +69,7 @@ console.log("getname: ","is: "+result);
             <h4> ${value.price}</h4>
             <div className='quanity-container'>
             <select defaultValue="" onChange={(e) => setQuantity(e.target.value)}>
-              <option value="" disabled>Select Quantity</option>
+              {/* <option value="" disabled>Select Quantity</option> */}
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -70,7 +78,8 @@ console.log("getname: ","is: "+result);
         </select>
         </div>
             {/* <button onClick={() => handleAddCart(value.name, value.price)}>Add to Cart</button> */}
-            <button onClick={() => handleAddCart(value._id, value.name, value.price)}>Add to Cart</button>
+            {/* <button onClick={() => handleAddCart(value._id, value.name, value.price)}>Add to Cart</button> */}
+            <button onClick={() => handleAddCart(value._id, quantity)}>Add to Cart</button>
 
             </div>
             // </userContextMain.Provider>
