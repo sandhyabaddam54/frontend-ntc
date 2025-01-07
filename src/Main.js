@@ -14,7 +14,7 @@ export default function Main() {
   // const {cart, setCart} = useContext(userContextSignUp);
   // const {selectedProduct, setSelectedProduct} = useContext(userContextSignUp);
      const [quantity, setQuantity] = useState(1);
-  const url = "http://localhost:8080/";
+  const url = "https://backend-ntc.onrender.com/";
   const showProducts = async () => {
       const response = await axios.get(url) 
       // console.log("resp: "," "+response.data[0].name+" "+response.data[0].price);

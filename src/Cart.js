@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 import "./Cart.css";
 import { useContext } from 'react'
 import { userContextSignUp } from './App';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 export default function Cart() {
+  const navigate = useNavigate();
   const {cart, setCart, products} = useContext(userContextSignUp);
   console.log("cratdet: ","is: "+products[0].price);
   const[orderVal, setOrderVal] = useState(0);
@@ -14,7 +17,7 @@ export default function Cart() {
       },0)
     );
   })
-
+const url = "http://localhost:8080/orders";
  const handleMinus = (id, qty) => {
   setCart((prev) => ({...prev, [id]: qty - 1}))
   }
@@ -26,6 +29,17 @@ export default function Cart() {
   }
   const handleSubmit = () => {
     // if()
+      const submitorders = axios.post(url, {
+        items : cart,
+        total : orderVal
+      })
+      // if(submitorders.status == 200){
+        console.log("orders added..", " "+submitorders.data);
+        // alert("order added successfully. ")
+      // }else {
+      //   alert("oops, please try again.")
+      // }
+      navigate("/orders");
   }
   return (
     // <div>
